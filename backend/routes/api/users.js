@@ -9,15 +9,15 @@ const { User } = require('../../db/models');
 router.get('/current', restoreUser, (req, res) => {
     const { user } = req;
 
-    const safeUser = {
-        id: user.id,
-        firstName: user.firstName,
-        lastName: user.lastName,
-        email: user.email,
-        username: user.username
-    }
-    
-    return user ? res.json({ user: safeUser }) : res.json({ user: null });
+    return user ? res.json({
+        user: {
+            id: user.id,
+            firstName: user.firstName,
+            lastName: user.lastName,
+            email: user.email,
+            username: user.username
+        }
+    }) : res.json({ user: null });
 });
 
 //log in
