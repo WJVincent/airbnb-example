@@ -50,8 +50,22 @@ router.delete('/current', (_req, res) => {
 })
 
 //sign up
-router.post('/', (req, res) => {
+router.post('/', async (req, res) => {
+    let { email, password, username, firstName, lastName } = req.body;
+    password = bcrypt.hashSync(password);
+    const user = await User.create({ email, username, password, firstName, lastName });
 
+    const safeUser = {
+        id: user.id,
+        email: user.email,
+        username: user.username,
+    };
+
+    await setTokenCookie(res, safeUser);
+
+    return res.json({
+        user: safeUser
+    });
 });
 
 module.exports = router;
