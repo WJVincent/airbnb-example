@@ -54,6 +54,7 @@ router.post('/current', async (req, res, next) => {
     });
 });
 
+//log out
 router.delete('/current', (_req, res) => {
     res.clearCookie('token');
     return res.json({ message: 'success' });
