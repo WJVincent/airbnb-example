@@ -4,7 +4,7 @@
 let options = {};
 
 if(process.env.NODE_ENV === 'production'){
-  options.schema = process.end.SCHEMA;
+  options.schema = process.env.SCHEMA;
 };
 
 module.exports = {
