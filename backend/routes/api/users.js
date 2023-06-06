@@ -44,8 +44,13 @@ router.post('/current', async (req, res, next) => {
     });
 });
 
+router.delete('/current', (_req, res) => {
+    res.clearCookie('token');
+    return res.json({ message: 'success' });
+})
+
 //sign up
-router.post('/users', (req, res) => {
+router.post('/', (req, res) => {
 
 });
 
