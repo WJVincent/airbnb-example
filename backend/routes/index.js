@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const apiRouter = require('./api/');
 
 //take this route out when building the frontend
 router.get("/api/csrf/restore", (req, res) => {
@@ -9,4 +10,5 @@ router.get("/api/csrf/restore", (req, res) => {
   });
 });
 
+router.use('/api', apiRouter);
 module.exports = router;
